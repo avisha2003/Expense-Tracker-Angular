@@ -24,11 +24,11 @@ export class ExpenseService{
         return this.http.post<Expense>(this.API_URL, expense)
     }
 
-    updateExpense(id: number, expense: Expense){
+    updateExpense(id: String, expense: Expense){
         return this.http.put<Expense>(`${this.API_URL}/${id}`, expense)
     }
 
-    deleteExpense(id: number){
+    deleteExpense(id: String){
         return this.http.delete<Expense>(`${this.API_URL}/${id}`)
     }
 } 

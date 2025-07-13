@@ -123,7 +123,7 @@ export class ExpenseForm implements OnInit {
       console.log('Submitting expense data:', expenseData);
 
       const request$ = this.isEditMode()
-        ? this.expenseService.updateExpense(Number(this.id()), expenseData)
+        ? this.expenseService.updateExpense(this.id()!, expenseData)
         : this.expenseService.createExpense(expenseData);
 
       request$.subscribe({
