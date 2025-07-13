@@ -1,1 +1,35 @@
-<p>dashboard works!</p>
+<p-toast />
+<div class="row">
+  <p-card
+    header="Monthly Expenses Summary for {{ currentDateTime | date : 'yyyy' }}"
+  >
+    <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
+  </p-card>
+
+  <p-card
+    class="mt-5"
+    header="Payment Method wise Expenses Summary {{
+      currentDateTime | date : 'yyyy'
+    }}"
+  >
+    <div class="d-flex justify-content-center">
+      <p-chart type="doughnut" [data]="data" [options]="options" class="w-50" />
+    </div>
+  </p-card>
+
+  <p-card
+    class="mt-5"
+    header="Category wise Expenses Summary {{
+      currentDateTime | date : 'yyyy'
+    }}"
+  >
+    <div class="d-flex justify-content-center">
+      <p-chart
+        type="polarArea"
+        [data]="dataPolarArea"
+        [options]="optionsPolarArea"
+        class="w-50"
+      />
+    </div>
+  </p-card>
+</div>

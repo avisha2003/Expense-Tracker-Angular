@@ -1,3 +1,40 @@
 {
-  "expenses": []
+  "expenses": [
+    {
+      "amount": 20000,
+      "date": "2025-07-13",
+      "category": {
+        "name": "Entertainment",
+        "code": "Entertainment"
+      },
+      "paymentMethod": {
+        "name": "Credit Card",
+        "code": "Credit Card"
+      },
+      "description": "film",
+      "tags": [
+        "film"
+      ],
+      "notes": "",
+      "id": "facf"
+    },
+    {
+      "id": "5c6e",
+      "amount": 5000,
+      "date": "2025-05-06",
+      "category": {
+        "name": "Health",
+        "code": "Health"
+      },
+      "paymentMethod": {
+        "name": "Debit Card",
+        "code": "Debit Card"
+      },
+      "description": "medicine",
+      "tags": [
+        "medicine"
+      ],
+      "notes": ""
+    }
+  ]
 }

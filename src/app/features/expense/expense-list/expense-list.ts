@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ExpenseService } from '../../../core/models/services/expense.service';
+import { ExpenseService } from '../../../core/services/expense.service';
 import { Expense } from '../../../core/models/expense.model';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';

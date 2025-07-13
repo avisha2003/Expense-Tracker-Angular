@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ExpenseService } from '../../../core/models/services/expense.service';
+import { ExpenseService } from '../../../core/services/expense.service';
 import { MessageService } from 'primeng/api';
 import {
   Expense,
