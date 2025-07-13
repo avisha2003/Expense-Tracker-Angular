@@ -1,0 +1,140 @@
+<p-toast />
+<p-card [header]="isEditMode() ? 'Edit Expense' : 'Add Expense'">
+  <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+    <div class="row g-3">
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="amount" class="form-label">Amount*</label>
+          <p-inputNumber
+            [ngClass]="{
+			  'ng-invalid ng-dirty': expenseForm.get('amount')?.invalid && expenseForm.get('amount')?.touched,
+			}"
+            class="ng-invalid ng-dirty"
+            inputId="amount"
+            formControlName="amount"
+            mode="currency"
+            currency="LKR"
+            [showButtons]="true"
+            styleClass="w-100"
+          ></p-inputNumber>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="date" class="form-label">Date*</label>
+          <p-datepicker
+            [ngClass]="{
+			  'ng-invalid ng-dirty': expenseForm.get('date')?.invalid && expenseForm.get('date')?.touched,
+			}"
+            formControlName="date"
+            [showIcon]="true"
+            inputId="date"
+            [showOnFocus]="false"
+            styleClass="w-100"
+          />
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="category" class="form-label">Category*</label>
+          <p-select
+            [ngClass]="{
+			  'ng-invalid ng-dirty': expenseForm.get('category')?.invalid && expenseForm.get('category')?.touched,
+			}"
+            formControlName="category"
+            [options]="categories"
+            optionLabel="name"
+            placeholder="Select a Category"
+            styleClass="w-100"
+          />
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="paymentMethod" class="form-label">Payment Method*</label>
+          <p-select
+            [ngClass]="{
+			  'ng-invalid ng-dirty': expenseForm.get('paymentMethod')?.invalid && expenseForm.get('paymentMethod')?.touched,
+			}"
+            formControlName="paymentMethod"
+            [options]="paymentMethods"
+            optionLabel="name"
+            placeholder="Select a Payment Method"
+            styleClass="w-100"
+          />
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="description" class="form-label">Description*</label>
+          <input
+            [ngClass]="{
+			  'ng-invalid ng-dirty': expenseForm.get('description')?.invalid && expenseForm.get('description')?.touched,
+			}"
+            type="text"
+            pInputText
+            formControlName="description"
+            class="w-100"
+          />
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="tags" class="form-label">Tags</label>
+          <input
+            #tagInput
+            type="text"
+            placeholder="Add a tag and press enter"
+            pInputText
+            class="w-100"
+            (keydown.enter)="
+              $event.preventDefault();
+              addtag(tagInput.value);
+              tagInput.value = ''
+            "
+          />
+        </div>
+        <small>Press enter to add a tag</small>
+        <br />
+        @for (tag of tags(); track $index) {
+        <p-chip
+          [label]="tag"
+          [removable]="true"
+          (onRemove)="removeTag(tag)"
+        ></p-chip>
+        }
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <label for="notes" class="form-label">Notes</label>
+          <textarea
+            rows="3"
+            cols="30"
+            pTextarea
+            formControlName="notes"
+            class="w-100"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end gap-2">
+      <p-button
+        label="Cancel"
+        type="button"
+        severity="secondary"
+        [routerLink]="'/expenses'"
+      />
+      <p-button
+        [label]="isEditMode() ? 'Edit Expense' : 'Add Expense'"
+        type="submit"
+        [disabled]="expenseForm.invalid"
+      />
+    </div>
+  </form>
+</p-card>
