@@ -21,5 +21,11 @@ export const routes: Routes = [
         path: 'expenses/new',
         loadComponent: () => import('./features/expense/expense-form/expense-form')
         .then(m => m.ExpenseForm)
+    },
+
+    {
+        path: 'expenses/:id/edit',
+        loadComponent: () => import('./features/expense/expense-form/expense-form')
+        .then(m => m.ExpenseForm)
     }
 ];
